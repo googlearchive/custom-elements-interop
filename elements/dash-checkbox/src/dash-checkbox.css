@@ -7,7 +7,7 @@ part of the polymer project is also subject to an additional IP rights grant
 found at http://polymer.github.io/PATENTS.txt
 */
 
-howto-checkbox {
+dash-checkbox {
   display: inline-block;
   background: url('./images/unchecked-checkbox.svg') no-repeat;
   background-size: contain;
@@ -16,17 +16,17 @@ howto-checkbox {
   vertical-align: middle;
 }
 
-howto-checkbox[checked] {
+dash-checkbox[checked] {
   background: url('./images/checked-checkbox.svg') no-repeat;
   background-size: contain;
 }
 
-howto-checkbox[disabled] {
+dash-checkbox[disabled] {
   background: url('./images/unchecked-checkbox-disabled.svg') no-repeat;
   background-size: contain;
 }
 
-howto-checkbox[checked][disabled] {
+dash-checkbox[checked][disabled] {
   background: url('./images/checked-checkbox-disabled.svg') no-repeat;
   background-size: contain;
 }
