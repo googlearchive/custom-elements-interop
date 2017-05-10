@@ -1,0 +1,32 @@
+/*
+Copyright (c) 2017 The Polymer Project Authors. All rights reserved. This code
+may only be used under the BSD style license found at
+http://polymer.github.io/LICENSE.txt The complete set of contributors may be
+found at http://polymer.github.io/CONTRIBUTORS.txt Code distributed by Google as
+part of the polymer project is also subject to an additional IP rights grant
+found at http://polymer.github.io/PATENTS.txt
+*/
+
+howto-checkbox {
+  display: inline-block;
+  background: url('./images/unchecked-checkbox.svg') no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+howto-checkbox[checked] {
+  background: url('./images/checked-checkbox.svg') no-repeat;
+  background-size: contain;
+}
+
+howto-checkbox[disabled] {
+  background: url('./images/unchecked-checkbox-disabled.svg') no-repeat;
+  background-size: contain;
+}
+
+howto-checkbox[checked][disabled] {
+  background: url('./images/checked-checkbox-disabled.svg') no-repeat;
+  background-size: contain;
+}

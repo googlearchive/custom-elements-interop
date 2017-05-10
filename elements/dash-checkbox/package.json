@@ -1,0 +1,20 @@
+{
+  "name": "dash-checkbox",
+  "version": "1.0.0",
+  "description": "A checkbox Custom Element.",
+  "author": "Rob Dodson <robdodson@google.com>",
+  "license": "BSD-3-Clause",
+  "flat": true,
+  "main": "dist/dash-checkbox.umd.js",
+  "module": "dist/dash-checkbox.es5.js",
+  "es2015": "dist/dash-checkbox.js",
+  "scripts": {
+    "build": "rollem && cp src/dash-checkbox.css dist/dash-checkbox.css && cp -r src/images dist/images"
+  },
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "rollem": "^1.11.3",
+    "rollup-plugin-babel": "^2.7.1"
+  }
+}
