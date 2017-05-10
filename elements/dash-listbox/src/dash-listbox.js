@@ -31,6 +31,14 @@ listboxTemplate.innerHTML = `
       border-radius: 3px;
       width: 300px;
     }
+
+    ::slotted(dash-option) {
+      border-bottom: 1px solid #8A8A8A;
+    }
+
+    ::slotted(dash-option:last-of-type) {
+      border-bottom: none;
+    }
   </style>
   <slot></slot>
 `.trim();
@@ -45,7 +53,7 @@ export class DashListbox extends HTMLElement {
   connectedCallback() {
     if (!this._mounted) {
       ShadyCSS.styleElement(this);
-      this.shadowRoot(document.importNode(listboxTemplate.content, true));
+      this.shadowRoot.appendChild(document.importNode(listboxTemplate.content, true));
       this._mounted = true;
     }
 
@@ -242,11 +250,6 @@ optionTemplate.innerHTML = `
       padding: 8px;
       user-select: none;
       cursor: default;
-      border-bottom: 1px solid #8A8A8A;
-    }
-
-    :host:last-of-type {
-      border-bottom: none;
     }
 
     :host([selected]) {
@@ -254,6 +257,7 @@ optionTemplate.innerHTML = `
       background: #0E9688;
     }
   </style>
+  <slot></slot>
 `.trim();
 
 ShadyCSS.prepareTemplate(optionTemplate, 'dash-option');
@@ -266,13 +270,13 @@ export class DashOption extends HTMLElement {
 
   constructor() {
     super();
-    this.createShadowRoot({ mode: 'open' });
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
     if (!this._mounted) {
       ShadyCSS.styleElement(this);
-      this.shadowRoot(document.importNode(optionTemplate.content, true));
+      this.shadowRoot.appendChild(document.importNode(optionTemplate.content, true));
       this._mounted = true;
     }
 
