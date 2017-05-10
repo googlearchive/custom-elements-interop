@@ -9,7 +9,7 @@
   "module": "dist/dash-checkbox.es5.js",
   "es2015": "dist/dash-checkbox.js",
   "scripts": {
-    "build": "rollem && cp src/dash-checkbox.css dist/dash-checkbox.css && cp -r src/images dist/images"
+    "build": "rollem && cp src/dash-checkbox.css dist/dash-checkbox.css && cp -r src/images dist/"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",

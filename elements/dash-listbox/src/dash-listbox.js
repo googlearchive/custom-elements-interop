@@ -22,8 +22,33 @@ const KEYCODE = {
   END: 35,
 };
 
+let listboxTemplate = document.createElement('template');
+listboxTemplate.innerHTML = `
+  <style>
+    :host {
+      display: block;
+      border: 1px solid #8A8A8A;
+      border-radius: 3px;
+      width: 300px;
+    }
+  </style>
+  <slot></slot>
+`.trim();
+
+ShadyCSS.prepareTemplate(listboxTemplate, 'dash-listbox');
 export class DashListbox extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   connectedCallback() {
+    if (!this._mounted) {
+      ShadyCSS.styleElement(this);
+      this.shadowRoot(document.importNode(listboxTemplate.content, true));
+      this._mounted = true;
+    }
+
     if (!this.hasAttribute('role'))
       this.setAttribute('role', 'listbox');
     if (!this.hasAttribute('tabindex'))
@@ -209,6 +234,29 @@ window.customElements.define('dash-listbox', DashListbox);
 // The number is used to generated new, unique IDs for `aria-activedescendant`.
 let dashOptionCounter = 0;
 
+let optionTemplate = document.createElement('template');
+optionTemplate.innerHTML = `
+  <style>
+    :host {
+      display: block;
+      padding: 8px;
+      user-select: none;
+      cursor: default;
+      border-bottom: 1px solid #8A8A8A;
+    }
+
+    :host:last-of-type {
+      border-bottom: none;
+    }
+
+    :host([selected]) {
+      color: white;
+      background: #0E9688;
+    }
+  </style>
+`.trim();
+
+ShadyCSS.prepareTemplate(optionTemplate, 'dash-option');
 export class DashOption extends HTMLElement {
   static get observedAttributes() {
     // There's no need to observe the `value` attribute because there's no
@@ -216,7 +264,18 @@ export class DashOption extends HTMLElement {
     return ['selected'];
   }
 
+  constructor() {
+    super();
+    this.createShadowRoot({ mode: 'open' });
+  }
+
   connectedCallback() {
+    if (!this._mounted) {
+      ShadyCSS.styleElement(this);
+      this.shadowRoot(document.importNode(optionTemplate.content, true));
+      this._mounted = true;
+    }
+
     if (!this.hasAttribute('role'))
       this.setAttribute('role', 'option');
 
